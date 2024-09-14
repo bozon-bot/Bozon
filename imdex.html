@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOZON MUSIC PROMOS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #1d1f20;
+            padding: 10px;
+        }
+
+        header img {
+            height: 50px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #f39c12;
+        }
+
+        /* SLIDER */
+        .slider {
+            width: 100%;
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+            background-color: #333;
+            margin-bottom: 20px;
+        }
+
+        .slides {
+            display: flex;
+            width: 300%;
+            height: 100%;
+            animation: slide 6s infinite;
+        }
+
+        .slides img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes slide {
+            0% { transform: translateX(0%); }
+            33% { transform: translateX(-100%); }
+            66% { transform: translateX(-200%); }
+            100% { transform: translateX(0%); }
+        }
+
+        .sections {
+            display: block;
+            padding: 20px;
+        }
+
+        .section {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .section h2 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .song-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .song {
+            width: 48%;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .song img {
+            width: 100%;
+            height: 200px;
+            border-radius: 6px;
+        }
+
+        .song-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .artist-name {
+            font-size: 14px;
+            color: #777;
+        }
+
+        .song a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .song a:hover .song-title {
+            color: #f39c12;
+        }
+
+        .see-more {
+            display: inline-block;
+            margin-top: 10px;
+            text-decoration: none;
+            padding: 8px 12px;
+            background-color: #1d1f20;
+            color: white;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .see-more:hover {
+            background-color: #f39c12;
+        }
+
+        @media (min-width: 768px) {
+            .song {
+                width: 18%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="https://img.wapka.io/00eilc.jpg" alt="BOZON MUSIC PROMOS">
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="videos.html">Videos</a></li>
+            <li><a href="trending.html">Trending</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="slider">
+    <div class="slides">
+        <img src="https://img.wapka.io/00eilc.jpg" alt="Slide 1">
+        <img src="https://img.wapka.io/00eilc.jpg" alt="Slide 2">
+        <img src="https://img.wapka.io/00eilc.jpg" alt="Slide 3">
+    </div>
+</div>
+
+<div class="sections">
+    <!-- New Songs Section -->
+    <div class="section">
+        <h2>New Songs</h2>
+        <div class="song-list">
+            <div class="song">
+                <a href="song1.html">
+                    <img src="https://img.wapka.io/00eilc.jpg" alt="Song 1">
+                    <div class="song-title">Song Title 1</div>
+                    <div class="artist-name">Artist 1</div>
+                </a>
+            </div>
+            <div class="song">
+                <a href="song2.html">
+                    <img src="https://img.wapka.io/00eilc.jpg" alt="Song 2">
+                    <div class="song-title">Song Title 2</div>
+                    <div class="artist-name">Artist 2</div>
+                </a>
+            </div>
+            <!-- Add 3 more songs here -->
+        </div>
+        <a href="new.html" class="see-more">See More</a>
+    </div>
+
+    <!-- Trending Songs Section -->
+    <div class="section">
+        <h2>Trending Songs</h2>
+        <div class="song-list">
+            <div class="song">
+                <a href="song3.html">
+                    <img src="https://img.wapka.io/00eilc.jpg" alt="Song 3">
+                    <div class="song-title">Song Title 3</div>
+                    <div class="artist-name">Artist 3</div>
+                </a>
+            </div>
+            <div class="song">
+                <a href="song4.html">
+                    <img src="https://img.wapka.io/00eilc.jpg" alt="Song 4">
+                    <div class="song-title">Song Title 4</div>
+                    <div class="artist-name">Artist 4</div>
+                </a>
+            </div>
+            <!-- Add 3 more songs here -->
+        </div>
+        <a href="trending.html" class="see-more">See More</a>
+    </div>
+
+    <!-- Popular Songs Section -->
+    <div class="section">
+        <h2>Popular Songs</h2>
+        <div class="song-list">
+            <div class="song">
+                <a href="song5.html">
+                    <img src="https://img.wapka.io/00eilc.jpg" alt="Song 5">
+                    <div class="song-title">Song Title 5</div>
+                    <div class="artist-name">Artist 5</div>
+                </a>
+            </div>
+            <div class="song">
+                <a href="song6.html">
+                    <img src="https://img.wapka.io/00eilc.jpg" alt="Song 6">
+                    <div class="song-title">Song Title 6</div>
+                    <div class="artist-name">Artist 6</div>
+                </a>
+            </div>
+            <!-- Add 3 more songs here -->
+        </div>
+        <a href="popular.html" class="see-more">See More</a>
+    </div>
+
+    <!-- Recommended Songs Section -->
+    <div class="section">
+        <h2>Recommended Songs</h2>
+        <div class="song-list">
+            <div class="song">
+                <a href="song7.html">
+                    <img src="https://img.wapka.io/00eilc.jpg" alt="Song 7">
+                    <div class="song-title">Song Title 7</div>
+                    <div class="artist-name">Artist 7</div>
+                </a>
+            </div>
+            <div class="song">
+                <a href="song8.html">
+                    <img src="https://img.wapka.io/00eilc.jpg" alt="Song 8">
+                    <div class="song-title">Song Title 8</div>
+                    <div class="artist-name">Artist 8</div>
+                </a>
+            </div>
+            <!-- Add 3 more songs here -->
+        </div>
+        <a href="recommended.html" class="see-more">See More</a>
+    </div>
+</div>
+
+</body>
+</html>
