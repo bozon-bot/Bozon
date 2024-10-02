@@ -3,273 +3,177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BOZON MUSIC PROMOS</title>
+    <title>Login / Register</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            height: 100vh;
             display: flex;
+            justify-content: center;
             align-items: center;
-            justify-content: space-between;
-            background-color: #1d1f20;
-            padding: 10px;
         }
 
-        header img {
-            height: 50px;
-        }
-
-        nav ul {
-            list-style-type: none;
-            display: flex;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav ul li {
-            margin: 0 15px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: #f39c12;
-        }
-
-        /* SLIDER */
-        .slider {
+        .container {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 20px 30px;
+            max-width: 400px;
             width: 100%;
-            height: 300px;
-            position: relative;
-            overflow: hidden;
-            background-color: #333;
-            margin-bottom: 20px;
-        }
-
-        .slides {
-            display: flex;
-            width: 300%;
-            height: 100%;
-            animation: slide 6s infinite;
-        }
-
-        .slides img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        @keyframes slide {
-            0% { transform: translateX(0%); }
-            33% { transform: translateX(-100%); }
-            66% { transform: translateX(-200%); }
-            100% { transform: translateX(0%); }
-        }
-
-        .sections {
-            display: block;
-            padding: 20px;
-        }
-
-        .section {
-            margin-bottom: 20px;
-            padding: 15px;
-            background-color: #fff;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
 
-        .section h2 {
-            margin-bottom: 15px;
+        h2 {
+            margin-bottom: 20px;
+            font-weight: 600;
             color: #333;
         }
 
-        .song-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-
-        .song {
-            width: 48%;
-            margin-bottom: 15px;
-            text-align: left;
-        }
-
-        .song img {
+        input, select {
             width: 100%;
-            height: 200px;
-            border-radius: 6px;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
         }
 
-        .song-title {
-            font-size: 16px;
-            font-weight: bold;
-            margin-top: 5px;
-        }
-
-        .artist-name {
-            font-size: 14px;
-            color: #777;
-        }
-
-        .song a {
-            text-decoration: none;
-            color: black;
-        }
-
-        .song a:hover .song-title {
-            color: #f39c12;
-        }
-
-        .see-more {
-            display: inline-block;
-            margin-top: 10px;
-            text-decoration: none;
-            padding: 8px 12px;
-            background-color: #1d1f20;
+        input[type="submit"] {
+            background: #764ba2;
             color: white;
-            border-radius: 4px;
-            transition: background-color 0.3s;
+            cursor: pointer;
         }
 
-        .see-more:hover {
-            background-color: #f39c12;
+        input[type="submit"]:hover {
+            background: #667eea;
         }
 
-        @media (min-width: 768px) {
-            .song {
-                width: 18%;
-            }
+        .toggle {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            color: #667eea;
+        }
+
+        .toggle:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
 
-<header>
-    <img src="https://img.wapka.io/00eilc.jpg" alt="BOZON MUSIC PROMOS">
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="videos.html">Videos</a></li>
-            <li><a href="trending.html">Trending</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
-</header>
+<div class="container" id="form-container">
+    <h2 id="form-title">Login</h2>
 
-<div class="slider">
-    <div class="slides">
-        <img src="https://img.wapka.io/00eilc.jpg" alt="Slide 1">
-        <img src="https://img.wapka.io/00eilc.jpg" alt="Slide 2">
-        <img src="https://img.wapka.io/00eilc.jpg" alt="Slide 3">
-    </div>
+    <!-- Login Form -->
+    <form id="login-form" style="display: block;" onsubmit="login(event)">
+        <input type="text" id="login-phone" placeholder="Phone Number" required>
+        <input type="password" id="login-password" placeholder="Password" required>
+        <input type="submit" value="Login">
+    </form>
+
+    <!-- Register Form -->
+    <form id="register-form" style="display: none;" onsubmit="register(event)">
+        <input type="text" id="first-name" placeholder="First Name" required>
+        <input type="text" id="last-name" placeholder="Last Name" required>
+        <select id="gender" required>
+            <option value="" disabled selected>Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="text" id="phone" placeholder="Phone Number" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <input type="submit" value="Register">
+    </form>
+
+    <p class="toggle" id="toggle-text">Don't have an account? Register</p>
 </div>
 
-<div class="sections">
-    <!-- New Songs Section -->
-    <div class="section">
-        <h2>New Songs</h2>
-        <div class="song-list">
-            <div class="song">
-                <a href="song1.html">
-                    <img src="https://img.wapka.io/00eilc.jpg" alt="Song 1">
-                    <div class="song-title">Song Title 1</div>
-                    <div class="artist-name">Artist 1</div>
-                </a>
-            </div>
-            <div class="song">
-                <a href="song2.html">
-                    <img src="https://img.wapka.io/00eilc.jpg" alt="Song 2">
-                    <div class="song-title">Song Title 2</div>
-                    <div class="artist-name">Artist 2</div>
-                </a>
-            </div>
-            <!-- Add 3 more songs here -->
-        </div>
-        <a href="new.html" class="see-more">See More</a>
-    </div>
+<script>
+    // Toggle between login and register form
+    const toggleText = document.getElementById('toggle-text');
+    const loginForm = document.getElementById('login-form');
+    const registerForm = document.getElementById('register-form');
+    const formTitle = document.getElementById('form-title');
 
-    <!-- Trending Songs Section -->
-    <div class="section">
-        <h2>Trending Songs</h2>
-        <div class="song-list">
-            <div class="song">
-                <a href="song3.html">
-                    <img src="https://img.wapka.io/00eilc.jpg" alt="Song 3">
-                    <div class="song-title">Song Title 3</div>
-                    <div class="artist-name">Artist 3</div>
-                </a>
-            </div>
-            <div class="song">
-                <a href="song4.html">
-                    <img src="https://img.wapka.io/00eilc.jpg" alt="Song 4">
-                    <div class="song-title">Song Title 4</div>
-                    <div class="artist-name">Artist 4</div>
-                </a>
-            </div>
-            <!-- Add 3 more songs here -->
-        </div>
-        <a href="trending.html" class="see-more">See More</a>
-    </div>
+    toggleText.addEventListener('click', () => {
+        if (loginForm.style.display === 'block') {
+            loginForm.style.display = 'none';
+            registerForm.style.display = 'block';
+            formTitle.textContent = 'Register';
+            toggleText.textContent = 'Already have an account? Login';
+        } else {
+            loginForm.style.display = 'block';
+            registerForm.style.display = 'none';
+            formTitle.textContent = 'Login';
+            toggleText.textContent = 'Don\'t have an account? Register';
+        }
+    });
 
-    <!-- Popular Songs Section -->
-    <div class="section">
-        <h2>Popular Songs</h2>
-        <div class="song-list">
-            <div class="song">
-                <a href="song5.html">
-                    <img src="https://img.wapka.io/00eilc.jpg" alt="Song 5">
-                    <div class="song-title">Song Title 5</div>
-                    <div class="artist-name">Artist 5</div>
-                </a>
-            </div>
-            <div class="song">
-                <a href="song6.html">
-                    <img src="https://img.wapka.io/00eilc.jpg" alt="Song 6">
-                    <div class="song-title">Song Title 6</div>
-                    <div class="artist-name">Artist 6</div>
-                </a>
-            </div>
-            <!-- Add 3 more songs here -->
-        </div>
-        <a href="popular.html" class="see-more">See More</a>
-    </div>
+    // AJAX login request
+    function login(event) {
+        event.preventDefault();
+        const phone = document.getElementById('login-phone').value;
+        const password = document.getElementById('login-password').value;
 
-    <!-- Recommended Songs Section -->
-    <div class="section">
-        <h2>Recommended Songs</h2>
-        <div class="song-list">
-            <div class="song">
-                <a href="song7.html">
-                    <img src="https://img.wapka.io/00eilc.jpg" alt="Song 7">
-                    <div class="song-title">Song Title 7</div>
-                    <div class="artist-name">Artist 7</div>
-                </a>
-            </div>
-            <div class="song">
-                <a href="song8.html">
-                    <img src="https://img.wapka.io/00eilc.jpg" alt="Song 8">
-                    <div class="song-title">Song Title 8</div>
-                    <div class="artist-name">Artist 8</div>
-                </a>
-            </div>
-            <!-- Add 3 more songs here -->
-        </div>
-        <a href="recommended.html" class="see-more">See More</a>
-    </div>
-</div>
+        fetch('https://your-cpanel-url.com/login.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ phone, password })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                window.location.href = 'profile.html'; // Redirect on success
+            } else {
+                alert('Login failed: ' + data.message);
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+    // AJAX register request
+    function register(event) {
+        event.preventDefault();
+        const firstName = document.getElementById('first-name').value;
+        const lastName = document.getElementById('last-name').value;
+        const gender = document.getElementById('gender').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const password = document.getElementById('password').value;
+
+        fetch('https://your-cpanel-url.com/register.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ firstName, lastName, gender, email, phone, password })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                window.location.href = 'profile.html'; // Redirect on success
+            } else {
+                alert('Registration failed: ' + data.message);
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+</script>
 
 </body>
-    </html>
+</html>
