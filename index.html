@@ -4,176 +4,115 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login / Register</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* Basic Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* Add some modern styling */
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a73e8, #8ab4f8);
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            margin: 0;
+            padding: 0;
         }
 
-        .container {
-            background: rgba(255, 255, 255, 0.8);
+        .form-container {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
             border-radius: 10px;
-            padding: 20px 30px;
-            max-width: 400px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            color: white;
             width: 100%;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
+            max-width: 400px;
         }
 
         h2 {
+            text-align: center;
             margin-bottom: 20px;
-            font-weight: 600;
-            color: #333;
+            font-weight: 300;
         }
 
-        input, select {
+        input[type="text"], input[type="email"], input[type="password"], input[type="tel"], select {
             width: 100%;
             padding: 10px;
             margin: 10px 0;
             border: none;
             border-radius: 5px;
-            background: rgba(255, 255, 255, 0.7);
-            font-size: 1rem;
         }
 
-        input[type="submit"] {
-            background: #764ba2;
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #1a73e8;
+            border: none;
+            border-radius: 5px;
             color: white;
             cursor: pointer;
+            font-size: 16px;
         }
 
-        input[type="submit"]:hover {
-            background: #667eea;
+        button:hover {
+            background-color: #8ab4f8;
         }
 
-        .toggle {
-            margin-top: 10px;
-            font-size: 0.9rem;
-            cursor: pointer;
-            color: #667eea;
+        p {
+            text-align: center;
         }
 
-        .toggle:hover {
+        a {
+            color: #8ab4f8;
+            text-decoration: none;
+        }
+
+        a:hover {
             text-decoration: underline;
         }
     </style>
 </head>
 <body>
 
-<div class="container" id="form-container">
-    <h2 id="form-title">Login</h2>
+    <!-- Registration Form -->
+    <div class="form-container" id="register-container" style="display: none;">
+        <h2>Register</h2>
+        <form method="POST" action="register.php">
+            <input type="text" name="first_name" placeholder="First Name" required>
+            <input type="text" name="last_name" placeholder="Last Name" required>
+            <select name="gender" required>
+                <option value="" disabled selected>Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="tel" name="phone" placeholder="Phone Number" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Register</button>
+            <p>Already have an account? <a href="#" id="show-login">Login here</a></p>
+        </form>
+    </div>
 
     <!-- Login Form -->
-    <form id="login-form" style="display: block;" onsubmit="login(event)">
-        <input type="text" id="login-phone" placeholder="Phone Number" required>
-        <input type="password" id="login-password" placeholder="Password" required>
-        <input type="submit" value="Login">
-    </form>
+    <div class="form-container" id="login-container">
+        <h2>Login</h2>
+        <form method="POST" action="login.php">
+            <input type="tel" name="phone" placeholder="Phone Number" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+            <p>Don't have an account? <a href="#" id="show-register">Register here</a></p>
+        </form>
+    </div>
 
-    <!-- Register Form -->
-    <form id="register-form" style="display: none;" onsubmit="register(event)">
-        <input type="text" id="first-name" placeholder="First Name" required>
-        <input type="text" id="last-name" placeholder="Last Name" required>
-        <select id="gender" required>
-            <option value="" disabled selected>Gender</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
-        </select>
-        <input type="email" id="email" placeholder="Email" required>
-        <input type="text" id="phone" placeholder="Phone Number" required>
-        <input type="password" id="password" placeholder="Password" required>
-        <input type="submit" value="Register">
-    </form>
+    <script>
+        // Toggle between login and register forms
+        document.getElementById('show-register').addEventListener('click', function() {
+            document.getElementById('login-container').style.display = 'none';
+            document.getElementById('register-container').style.display = 'block';
+        });
 
-    <p class="toggle" id="toggle-text">Don't have an account? Register</p>
-</div>
-
-<script>
-    // Toggle between login and register form
-    const toggleText = document.getElementById('toggle-text');
-    const loginForm = document.getElementById('login-form');
-    const registerForm = document.getElementById('register-form');
-    const formTitle = document.getElementById('form-title');
-
-    toggleText.addEventListener('click', () => {
-        if (loginForm.style.display === 'block') {
-            loginForm.style.display = 'none';
-            registerForm.style.display = 'block';
-            formTitle.textContent = 'Register';
-            toggleText.textContent = 'Already have an account? Login';
-        } else {
-            loginForm.style.display = 'block';
-            registerForm.style.display = 'none';
-            formTitle.textContent = 'Login';
-            toggleText.textContent = 'Don\'t have an account? Register';
-        }
-    });
-
-    // AJAX login request
-    function login(event) {
-        event.preventDefault();
-        const phone = document.getElementById('login-phone').value;
-        const password = document.getElementById('login-password').value;
-
-        fetch('https://your-cpanel-url.com/login.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ phone, password })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                window.location.href = 'profile.html'; // Redirect on success
-            } else {
-                alert('Login failed: ' + data.message);
-            }
-        })
-        .catch(error => console.error('Error:', error));
-    }
-
-    // AJAX register request
-    function register(event) {
-        event.preventDefault();
-        const firstName = document.getElementById('first-name').value;
-        const lastName = document.getElementById('last-name').value;
-        const gender = document.getElementById('gender').value;
-        const email = document.getElementById('email').value;
-        const phone = document.getElementById('phone').value;
-        const password = document.getElementById('password').value;
-
-        fetch('https://your-cpanel-url.com/register.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ firstName, lastName, gender, email, phone, password })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                window.location.href = 'profile.html'; // Redirect on success
-            } else {
-                alert('Registration failed: ' + data.message);
-            }
-        })
-        .catch(error => console.error('Error:', error));
-    }
-</script>
-
+        document.getElementById('show-login').addEventListener('click', function() {
+            document.getElementById('register-container').style.display = 'none';
+            document.getElementById('login-container').style.display = 'block';
+        });
+    </script>
 </body>
 </html>
